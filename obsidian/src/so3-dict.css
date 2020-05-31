@@ -1,0 +1,188 @@
+@import '../out/so3.css';
+
+/* ===============SO3================ */
+/* SO3-Specific Presentational styles */
+/* ================================== */
+
+/* These styles make the look emulate Star Ocean 3's Dictionary feature more accurately. */
+
+.nav-folder.mod-root > :first-child,
+.nav-folder-collapse-indicator {
+  display: none;
+}
+
+.nav-folder-title {
+  padding: 0px 15px 12px 15px;
+}
+
+/* Book icon like in the game menus */
+.nav-folder-title-content::before {
+  content: '📙';
+}
+
+/* Opens the "book" above when opening the folder */
+.nav-folder.mod-root
+  .nav-folder:not(.is-collapsed)
+  .nav-folder-title-content::before {
+  content: '📖';
+}
+
+.nav-files-container {
+  padding: 20px;
+}
+
+.nav-header .nav-buttons-container {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.mod-starred .nav-header .nav-buttons-container {
+  & .nav-action-button:nth-child(1)::after {
+    content: 'Star current entry';
+  }
+}
+
+/* ==ACTIONS== */
+/* Actions bar */
+/* =========== */
+.view-actions {
+  & .view-action {
+    & svg path {
+      stroke: var(--clr-white);
+    }
+  }
+}
+
+.svg-container {
+  padding-top: 90px;
+}
+
+/* ============== */
+/* Selection hand */
+/* ============== */
+.nav-folder-title,
+.nav-file-title,
+.tag-pane-tag-text,
+.search-result-file-title,
+.search-result-file-match,
+.side-dock-collapsible-section-header {
+  &:hover::before {
+    content: '👍';
+    position: absolute;
+    left: -12px;
+    top: 15px;
+    transform: scale(-1.75, 1.75) rotate(-45deg);
+    filter: grayscale() contrast(150%);
+    text-shadow: -2px 0px 0px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.search-result-file-title,
+.search-result-file-match {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &:hover::before {
+    left: -14px;
+  }
+}
+
+.side-dock-collapsible-section-header {
+  &:hover::before {
+    left: -34px;
+  }
+}
+
+/* Localizes the hand on hover, to the titles */
+.search-result-file-title {
+  position: relative;
+}
+
+.nav-files-container,
+.item-list,
+.mod-backlinks .side-dock-plugin-panel-inner,
+.mod-global-search .search-result-container,
+.tag-pane-tags {
+  padding: 27px;
+}
+
+.nav-header .nav-buttons-container {
+  padding: 42px;
+  padding-bottom: 0;
+  & .nav-action-button {
+    --left-pad: 75px;
+    &:nth-child(1)::after {
+      content: 'New entry';
+      top: 135px;
+      left: var(--left-pad);
+    }
+
+    &:nth-child(2)::after {
+      content: 'New category';
+      top: 172px;
+      left: var(--left-pad);
+    }
+
+    &:nth-child(3)::after {
+      top: 206px;
+      left: var(--left-pad);
+    }
+  }
+}
+
+/* Moves the actions bar to somewhere still accessible */
+.view-actions {
+  position: absolute;
+  bottom: calc(-100vh + 118px);
+  right: 20px;
+  z-index: 15;
+}
+
+.markdown-preview-view {
+  /* Moves the first tag into the top-right of the entry */
+  & > .markdown-preview-section:last-child p > .tag {
+    color: var(--clr-white);
+    font-size: 41px;
+    margin-bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    text-decoration: none;
+    text-shadow: var(--large-outline);
+    top: 14px;
+    z-index: 11;
+
+    &::before {
+      content: '(';
+    }
+
+    &::after {
+      content: ')';
+    }
+  }
+
+  /* Spaces out list items a bit */
+  & ol li {
+    padding-bottom: 0.25em;
+  }
+}
+
+.tooltip {
+  display: none;
+}
+
+.miscellaneous .internal-link {
+  color: var(--clr-misc);
+}
+
+.people .internal-link {
+  color: var(--clr-people);
+}
+
+.political-bodies-places .internal-link {
+  color: var(--clr-places);
+}
+
+.races .internal-link {
+  color: var(--clr-races);
+}

@@ -1,0 +1,270 @@
+:root {
+  --header-font: 'Questrial', sans-serif;
+  --body-font: 'Lustria', serif;
+  --mono-font: 'JetBrains Mono', Consolas, 'Courier New';
+
+  --fire-1: #ffeeeb;
+  --fire-2: #ffd5d1;
+  --fire-3: #ffa3a3;
+  --fire-4: #ff6161;
+  --fire-5: #ff0000;
+  --fire-6: #db0000;
+  --fire-7: #ad0006;
+  --fire-8: #850007;
+  --fire-9: #570007;
+
+  --water-1: #ebf5ff;
+  --water-2: #d6eaff;
+  --water-3: #b3d4ff;
+  --water-4: #3d8eff;
+  --water-5: #0000ff;
+  --water-6: #0000d6;
+  --water-7: #0000b8;
+  --water-8: #000099;
+  --water-9: #001861;
+
+  --yang: #ffffff;
+  --qi-1: #f2f2f2;
+  --qi-2: #e0e0e0;
+  --qi-3: #cccccc;
+  --qi-4: #a6a6a6;
+  --qi-5: #7f7f7f;
+  --qi-6: #666666;
+  --qi-7: #4d4d4d;
+  --qi-8: #333333;
+  --qi-9: #1a1a1a;
+  --yin: #000000;
+
+  --wind-1: #e6ffe6;
+  --wind-2: #ccffcc;
+  --wind-3: #b8ffb8;
+  --wind-4: #85ff85;
+  --wind-5: #00ff00;
+  --wind-6: #00d600;
+  --wind-7: #00a800;
+  --wind-8: #006608;
+  --wind-9: #003300;
+
+  --earth-1: #ffffd6;
+  --earth-2: #fffbbd;
+  --earth-3: #fffa99;
+  --earth-4: #fffc66;
+  --earth-5: #ffff00;
+  --earth-6: #faed00;
+  --earth-7: #d6c400;
+  --earth-8: #8f7700;
+  --earth-9: #423600;
+
+  --blockquote-border: var(--qi-3);
+}
+
+.theme-light {
+  /* Overrides for Obsidian defaults */
+  --text-accent: var(--fire-5);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  font-size: 18px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.view-content {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.view-header {
+  align-items: center;
+
+  & .view-header-title-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  & .view-header-title {
+    font-family: var(--header-font);
+  }
+
+  & .view-actions {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.markdown-source-view,
+.markdown-preview-view {
+  color: var(--qi-9);
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 36px;
+  max-width: 100%;
+}
+
+.markdown-source-view {
+  font-family: var(--mono-font);
+  font-size: 18px;
+  width: 700px;
+  /* & .cm-hmd-internal-link {
+    color: var(--fire-4);
+  } */
+
+  & .cm-s-obsidian span.cm-footref {
+    text-indent: 0;
+  }
+}
+
+.markdown-preview-view {
+  font-family: var(--body-font);
+  font-size: 21px;
+  line-height: 1.6;
+  width: 675px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-family: var(--header-font);
+    line-height: 1.2;
+  }
+
+  & h1 {
+    margin-top: 2em;
+  }
+  & h2 {
+    margin-top: 1.5em;
+  }
+
+  & h3 {
+    margin-top: 1.25em;
+  }
+
+  & p > code,
+  & li > code {
+    background: var(--qi-1);
+  }
+
+  & blockquote {
+    border: none;
+    border-left: 5px solid;
+    border-color: var(--qi-3);
+    font-size: 85%;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  & > .markdown-preview-section {
+    &:first-child {
+      /* "Metadata block" styles
+      This is in case I decide to implement a "metadata block" in the future
+      font-size: 80%;
+      background: var(--qi-1);
+      padding: 1em;
+      border-radius: 5px;
+      */
+
+      /* This hides the Zettelkasten UID from preview 
+      (I prefer to have it at the top of my ZK files
+      as opposed to in the file name)
+      
+      Comment it out if you're not a ZK user or share my preference */
+      display: none;
+    }
+
+    & > ol > li {
+      padding-top: 0.25em;
+      padding-bottom: 0.25em;
+    }
+
+    & .tag {
+      background: var(--qi-5);
+      color: var(--yang);
+      font-size: 80%;
+      padding: 0.5em;
+      text-decoration: none;
+      transition: 0.3s ease;
+      transition-property: color, background;
+
+      &:hover {
+        color: var(--yin);
+        background: var(--qi-2);
+      }
+    }
+  }
+
+  & .internal-link,
+  & .external-link {
+    text-decoration: none;
+    color: var(--fire-4);
+  }
+}
+
+.title {
+  font-weight: 600 !important;
+}
+
+.side-dock.mod-right {
+  border-left: none;
+}
+
+.side-dock-settings {
+  margin-bottom: 0;
+}
+
+.nav-file-title-content {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.CodeMirror {
+  padding: 0;
+}
+
+.CodeMirror-vscrollbar {
+  height: 0;
+}
+
+.cm-s-obsidian span.cm-inline-code {
+  font-size: unset;
+}
+
+/* Saving these for later from a theme on the Obsidian Discord; */
+/* might use them */
+
+/* strong {
+  font-weight: bolder;
+} */
+
+/* mark {
+  background-color: var(--text-mark) !important;
+} */
+
+/* th {
+  font-weight: 600 !important;
+} */
+
+/* thead {
+  border-bottom: 2px solid var(--background-modifier-border);
+} */
