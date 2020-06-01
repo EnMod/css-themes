@@ -113,18 +113,18 @@
     --left-pad: 75px;
     &:nth-child(1)::after {
       content: 'New entry';
-      top: 135px;
+      top: 40px;
       left: var(--left-pad);
     }
 
     &:nth-child(2)::after {
       content: 'New category';
-      top: 172px;
+      top: 76px;
       left: var(--left-pad);
     }
 
     &:nth-child(3)::after {
-      top: 206px;
+      top: 112px;
       left: var(--left-pad);
     }
   }
@@ -140,7 +140,7 @@
 
 .markdown-preview-view {
   /* Moves the first tag into the top-right of the entry */
-  & > .markdown-preview-section:last-child p > .tag {
+  & > .markdown-preview-section:nth-last-child(2) p > .tag {
     color: var(--clr-white);
     font-size: 41px;
     margin-bottom: 0;

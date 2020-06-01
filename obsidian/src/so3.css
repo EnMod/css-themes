@@ -131,19 +131,19 @@ body {
 
       &:nth-child(1)::after {
         content: 'New note';
-        top: 113px;
+        top: 18px;
         left: var(--left-pad);
       }
 
       &:nth-child(2)::after {
         content: 'New folder';
-        top: 150px;
+        top: 52px;
         left: var(--left-pad);
       }
 
       &:nth-child(3)::after {
         content: 'Change sort order';
-        top: 186px;
+        top: 89px;
         left: var(--left-pad);
       }
 
@@ -248,6 +248,13 @@ body {
   border: 6px var(--clr-border-inset);
   border-style: groove ridge ridge groove;
   border-radius: 36px 12px 12px 12px;
+}
+
+.side-dock-plugin-panel .side-dock-title,
+.side-dock-plugin-panel,
+.markdown-source-view,
+.markdown-preview-view,
+.view-header {
   &::before {
     position: absolute;
     content: '';
@@ -262,16 +269,21 @@ body {
   }
 }
 
+.side-dock-plugin-panel {
+  &::before {
+    top: 90px;
+    z-index: 1;
+  }
+  &.mod-backlinks::before,
+  &.mod-tag-pane::before {
+    top: 87px;
+  }
+}
+
 .view-header {
   &::before {
     top: -6px;
     left: -6px;
-  }
-}
-
-.side-dock-plugin-panel .side-dock-plugin-panel-inner {
-  &::before {
-    top: 90px;
   }
 }
 
@@ -429,7 +441,7 @@ body {
   & > .markdown-preview-section {
     max-width: 830px;
 
-    &:first-child {
+    &:nth-child(2) {
       /* For Zettelkasten users: Hides the ZK ID from preview if you use the first line for ID */
       /* Uncomment if you prefer keeping ZK ID at the top of your files
     instead of in the filename, but don't want it to show in preview */

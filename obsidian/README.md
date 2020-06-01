@@ -1,11 +1,14 @@
 # [Obsidian](https://obsidian.md) Themes
 
 These have some small requirements before usage in your vault(s):
+
 - Rename themes to `obsidian.css` when adding them to your vault
 - Go to Settings > Plugins and enable the "Custom CSS" plugin. You have to do this per-vault, because the application (handily) gives each vault their own config.
 - Switch your Appearance (in Settings > Appearance) to whatever appaearance is (in parentheses) in the theme heading below.
 
 Each theme's heading links to its raw CSS; alternatively, browse and/or download the desired CSS in the `out` folder.
+
+These are currently stable in `0.6.5`. As Obsidian rapidly develops and approaches `1.0.0` they might break! Use with caution.
 
 ## [Initial](https://raw.githubusercontent.com/EnMod/css-themes/master/obsidian/out/initial.css) (light)
 
