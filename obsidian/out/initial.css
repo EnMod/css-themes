@@ -56,6 +56,7 @@
   --earth-9: #423600;
 
   --blockquote-border: var(--qi-3);
+  --clr-body: var(--qi-9);
 }
 
 .theme-light {
@@ -109,7 +110,7 @@ img {
 
 .markdown-source-view,
 .markdown-preview-view {
-  color: var(--qi-9);
+  color: var(--clr-body);
   font-size: 18px;
   display: block;
   margin: 0 auto;
@@ -179,7 +180,7 @@ img {
     margin-bottom: 0;
   }
 
-.markdown-preview-view > .markdown-preview-section:first-child {
+.markdown-preview-view > .markdown-preview-section:nth-child(2) {
       /* "Metadata block" styles
       This is in case I decide to implement a "metadata block" in the future
       font-size: 80%;
@@ -218,9 +219,13 @@ img {
 
 .markdown-preview-view .internal-link,
   .markdown-preview-view .external-link {
-    text-decoration: none;
-    color: var(--fire-4);
+    color: var(--clr-body);
+    transition: 0.1s ease;
   }
+
+.markdown-preview-view .internal-link:hover, .markdown-preview-view .external-link:hover {
+      color: var(--fire-5);
+    }
 
 .title {
   font-weight: 600 !important;
