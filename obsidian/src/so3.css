@@ -93,6 +93,7 @@ body {
 /* ====FILE===== */
 /* File explorer */
 /* ============= */
+
 .nav-header {
   padding: 0;
 
@@ -240,20 +241,17 @@ body {
 /* ============BORDERS================ */
 /* Borders and little square in corner */
 /* =================================== */
-.side-dock-plugin-panel .side-dock-title,
-.side-dock-plugin-panel .side-dock-plugin-panel-inner,
+
+.workspace-leaf-content:not([data-type='markdown']),
 .markdown-source-view,
 .markdown-preview-view,
+.workspace-leaf.mod-active .view-header,
 .view-header {
   border: 6px var(--clr-border-inset);
   border-style: groove ridge ridge groove;
   border-radius: 36px 12px 12px 12px;
 }
 
-.side-dock-plugin-panel .side-dock-title,
-.side-dock-plugin-panel,
-.markdown-source-view,
-.markdown-preview-view,
 .view-header {
   &::before {
     position: absolute;
@@ -269,29 +267,38 @@ body {
   }
 }
 
-.side-dock-plugin-panel {
-  &::before {
-    top: 90px;
-    z-index: 1;
-  }
-  &.mod-backlinks::before,
-  &.mod-tag-pane::before {
-    top: 87px;
-  }
+.workspace-leaf::before {
+  position: absolute;
+  content: '';
+  border: 4px solid #e2e2e2;
+  border-style: groove ridge ridge groove;
+  border-radius: 1px;
+  background: #d8d8d8;
+  width: 13px;
+  height: 12px;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
-.view-header {
-  &::before {
-    top: -6px;
-    left: -6px;
-  }
+.workspace-tabs {
+  padding: 0 4px 30px 3px;
+}
+
+.workspace-leaf-resize-handle {
+  opacity: 0;
+}
+
+.view-header::before {
+  top: -6px;
+  left: -6px;
 }
 
 /* ========BG========= */
 /* Background gradient */
 /* =================== */
-.side-dock-plugin-panel .side-dock-title,
-.side-dock-plugin-panel .side-dock-plugin-panel-inner,
+
+.workspace-leaf-content:not([data-type='markdown']),
 .markdown-source-view,
 .markdown-preview-view {
   background: linear-gradient(
@@ -319,7 +326,6 @@ body {
   z-index: 5;
 
   & .view-header-title-container {
-    padding-left: 20px;
     height: unset;
 
     & .view-header-title {
@@ -332,9 +338,9 @@ body {
   }
 }
 
-.workspace-leaf.mod-active {
+.workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type {
   & .view-header {
-    border-bottom: 8px ridge var(--clr-border-inset);
+    border-bottom: 6px ridge var(--clr-border-inset);
   }
 
   & .view-header-title-container:after {
@@ -353,7 +359,7 @@ body {
 .markdown-preview-view {
   max-width: 100%;
   padding: 16px;
-  padding-top: 98px;
+  padding-top: 58px;
   border-radius: 36px 12px 12px 12px;
 }
 
@@ -438,8 +444,10 @@ body {
     padding: 4px 8px;
   }
 
-  & > .markdown-preview-section {
+  &.is-readable-line-width .markdown-preview-section {
     max-width: 830px;
+    margin-left: 0;
+    margin-right: 0;
 
     &:nth-child(2) {
       /* For Zettelkasten users: Hides the ZK ID from preview if you use the first line for ID */
@@ -578,7 +586,7 @@ body {
 /* ==TAGS=== */
 /* Tags pane */
 /* ========= */
-.tag-pane-tags {
+[data-type='tag'] {
   padding-top: 15px;
   padding-left: 5px;
 
@@ -646,7 +654,7 @@ body {
 /* BACKLINKS */
 /* Backlinks */
 /* ========= */
-.mod-backlinks {
+[data-type='backlink'] {
   & .side-dock-plugin-panel-inner {
     padding: 27px;
   }

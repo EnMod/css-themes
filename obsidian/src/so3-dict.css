@@ -69,7 +69,7 @@
   &:hover::before {
     content: '👍';
     position: absolute;
-    left: -12px;
+    left: -18px;
     top: 15px;
     transform: scale(-1.75, 1.75) rotate(-45deg);
     filter: grayscale() contrast(150%);
@@ -100,8 +100,8 @@
 
 .nav-files-container,
 .item-list,
-.mod-backlinks .side-dock-plugin-panel-inner,
-.mod-global-search .search-result-container,
+[data-type='backlink'] .view-content,
+[data-type='search'] .search-result-container,
 .tag-pane-tags {
   padding: 27px;
 }
@@ -138,9 +138,22 @@
   z-index: 15;
 }
 
+/* Moves the note drag handle to the top left of entries */
+.view-header-icon {
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  z-index: 15;
+}
+
+/* Moves the title to the right a bit */
+.view-header .view-header-title-container {
+  padding-left: 20px;
+}
+
 .markdown-preview-view {
   /* Moves the first tag into the top-right of the entry */
-  & > .markdown-preview-section:nth-last-child(2) p > .tag {
+  & > .markdown-preview-section:last-child p > .tag {
     color: var(--clr-white);
     font-size: 41px;
     margin-bottom: 0;

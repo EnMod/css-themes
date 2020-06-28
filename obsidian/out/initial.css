@@ -1,7 +1,12 @@
 :root {
-  --header-font: 'Questrial', sans-serif;
-  --body-font: 'Lustria', serif;
-  --mono-font: 'JetBrains Mono', Consolas, 'Courier New';
+  --fancy-sans: 'Questrial', 'Century Gothic', sans-serif;
+  --pragmatic-sans: 'Helvetica Neue', 'Nimbus Sans L', 'Arial', sans-serif;
+  --fancy-serif: 'Lustria', 'Georgia', serif;
+  --pragmatic-serif: 'Noto Serif', 'Times New Roman', serif;
+  --mono-font: 'JetBrains Mono', 'Courier New', Consolas, monospace;
+
+  --header-font: var(--fancy-sans);
+  --body-font: var(--fancy-serif);
 
   --fire-1: #ffeeeb;
   --fire-2: #ffd5d1;
@@ -71,6 +76,7 @@
 html,
 body {
   font-size: 18px;
+  font-family: var(--pragmatic-sans);
 }
 
 img {
@@ -180,29 +186,23 @@ img {
     margin-bottom: 0;
   }
 
-.markdown-preview-view > .markdown-preview-section:nth-child(2) {
-      /* "Metadata block" styles
-      This is in case I decide to implement a "metadata block" in the future
+/* &:first-child {
       font-size: 80%;
       background: var(--qi-1);
       padding: 1em;
       border-radius: 5px;
-      */
-
-      /* This hides the Zettelkasten UID from preview 
-      (I prefer to have it at the top of my ZK files
-      as opposed to in the file name)
-      
-      Comment it out if you're not a ZK user or share my preference */
-      display: none;
-    }
+    } */
 
 .markdown-preview-view > .markdown-preview-section > ol > li {
       padding-top: 0.25em;
       padding-bottom: 0.25em;
     }
 
+/* "Metadata block" styles
+      This is in case I decide to implement a "metadata block" in the future */
+
 .markdown-preview-view > .markdown-preview-section .tag {
+      font-family: var(--fancy-sans);
       background: var(--qi-5);
       color: var(--yang);
       font-size: 80%;
@@ -226,6 +226,14 @@ img {
 .markdown-preview-view .internal-link:hover, .markdown-preview-view .external-link:hover {
       color: var(--fire-5);
     }
+
+.markdown-preview-view .footnote-ref {
+    font-size: 14px;
+  }
+
+.markdown-preview-view ol.footnotes-list {
+    font-size: 16px;
+  }
 
 .title {
   font-weight: 600 !important;
