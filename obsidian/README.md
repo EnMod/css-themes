@@ -8,7 +8,7 @@ These have some small requirements before usage in your vault(s):
 
 Each theme's heading links to its raw CSS; alternatively, browse and/or download the desired CSS in the `out` folder.
 
-These are currently stable in `0.6.5`. As Obsidian rapidly develops and approaches `1.0.0` they might break! Use with caution.
+These are currently stable in `0.7.3`. As Obsidian rapidly develops and approaches `1.0.0` they might break! Use with caution.
 
 ## [Initial](https://raw.githubusercontent.com/EnMod/css-themes/master/obsidian/out/initial.css) (light)
 
