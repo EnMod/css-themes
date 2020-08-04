@@ -1,9 +1,9 @@
 :root {
-  --fancy-sans: 'Questrial', 'Century Gothic', sans-serif;
-  --pragmatic-sans: 'Helvetica Neue', 'Nimbus Sans L', 'Arial', sans-serif;
-  --fancy-serif: 'Lustria', 'Georgia', serif;
-  --pragmatic-serif: 'Noto Serif', 'Times New Roman', serif;
-  --mono-font: 'JetBrains Mono', 'Courier New', Consolas, monospace;
+  --fancy-sans: "Questrial", "Century Gothic", sans-serif;
+  --pragmatic-sans: "Helvetica Neue", "Nimbus Sans L", "Arial", sans-serif;
+  --fancy-serif: "Lustria", "Georgia", serif;
+  --pragmatic-serif: "Noto Serif", "Times New Roman", serif;
+  --mono-font: "JetBrains Mono", "Courier New", Consolas, monospace;
 
   --header-font: var(--fancy-sans);
   --body-font: var(--fancy-serif);
@@ -139,6 +139,12 @@ img {
     text-indent: 0;
   }
 
+.markdown-source-view pre.CodeMirror-line.HyperMD-list-line,
+  .markdown-source-view pre.CodeMirror-line-like.HyperMD-list-line {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+
 .markdown-preview-view {
   font-family: var(--body-font);
   font-size: 21px;
@@ -193,10 +199,15 @@ img {
       border-radius: 5px;
     } */
 
-.markdown-preview-view > .markdown-preview-section > ol > li {
-      padding-top: 0.25em;
-      padding-bottom: 0.25em;
+.markdown-preview-view > .markdown-preview-section > ol li,
+    .markdown-preview-view > .markdown-preview-section > ul li {
+      padding-top: 0.4em;
+      padding-bottom: 0.4em;
     }
+
+.markdown-preview-view > .markdown-preview-section > ol li p, .markdown-preview-view > .markdown-preview-section > ul li p {
+        margin: 0;
+      }
 
 /* "Metadata block" styles
       This is in case I decide to implement a "metadata block" in the future */
