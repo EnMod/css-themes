@@ -208,7 +208,7 @@ img {
       }
     }
 
-    & .tag {
+    & .tag:not(.token) {
       font-family: var(--fancy-sans);
       background: var(--qi-5);
       color: var(--yang);
