@@ -188,7 +188,7 @@ img {
     margin-bottom: 0;
   }
 
-  & > .markdown-preview-section {
+  & .markdown-preview-section {
     /* "Metadata block" styles
       This is in case I decide to implement a "metadata block" in the future */
     /* &:first-child {
@@ -198,10 +198,10 @@ img {
       border-radius: 5px;
     } */
 
-    & > ol li,
-    & > ul li {
-      padding-top: 0.4em;
-      padding-bottom: 0.4em;
+    & ol li,
+    & ul li {
+      padding-top: 0.35em;
+      padding-bottom: 0.35em;
 
       & p {
         margin: 0;

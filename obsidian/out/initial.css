@@ -199,20 +199,20 @@ img {
       border-radius: 5px;
     } */
 
-.markdown-preview-view > .markdown-preview-section > ol li,
-    .markdown-preview-view > .markdown-preview-section > ul li {
-      padding-top: 0.4em;
-      padding-bottom: 0.4em;
+.markdown-preview-view .markdown-preview-section ol li,
+    .markdown-preview-view .markdown-preview-section ul li {
+      padding-top: 0.35em;
+      padding-bottom: 0.35em;
     }
 
-.markdown-preview-view > .markdown-preview-section > ol li p, .markdown-preview-view > .markdown-preview-section > ul li p {
+.markdown-preview-view .markdown-preview-section ol li p, .markdown-preview-view .markdown-preview-section ul li p {
         margin: 0;
       }
 
 /* "Metadata block" styles
       This is in case I decide to implement a "metadata block" in the future */
 
-.markdown-preview-view > .markdown-preview-section .tag:not(.token) {
+.markdown-preview-view .markdown-preview-section .tag:not(.token) {
       font-family: var(--fancy-sans);
       background: var(--qi-5);
       color: var(--yang);
@@ -223,7 +223,7 @@ img {
       transition-property: color, background;
     }
 
-.markdown-preview-view > .markdown-preview-section .tag:not(.token):hover {
+.markdown-preview-view .markdown-preview-section .tag:not(.token):hover {
         color: var(--yin);
         background: var(--qi-2);
       }
