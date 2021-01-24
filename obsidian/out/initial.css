@@ -1,6 +1,6 @@
 :root {
   --fancy-sans: "Questrial", "Century Gothic", sans-serif;
-  --pragmatic-sans: "Helvetica Neue", "Nimbus Sans L", "Arial", sans-serif;
+  --pragmatic-sans: "Noto Sans", "Nimbus Sans L", "Arial", sans-serif;
   --fancy-serif: "Lustria", "Georgia", serif;
   --pragmatic-serif: "Noto Serif", "Times New Roman", serif;
   --mono-font: "JetBrains Mono", "Courier New", Consolas, monospace;
@@ -64,18 +64,12 @@
   --clr-body: var(--qi-9);
 }
 
-.theme-light {
-  /* Overrides for Obsidian defaults */
-  --text-accent: var(--fire-5);
-}
-
 * {
   -webkit-font-smoothing: antialiased;
 }
 
 html,
 body {
-  font-size: 18px;
   font-family: var(--pragmatic-sans);
 }
 
@@ -117,39 +111,39 @@ img {
 .markdown-source-view,
 .markdown-preview-view {
   color: var(--clr-body);
-  font-size: 18px;
-  display: block;
-  margin: 0 auto;
   padding: 0;
   padding-top: 36px;
-  max-width: 100%;
 }
 
-.markdown-source-view {
-  font-family: var(--mono-font);
+.cm-s-obsidian {
   font-size: 18px;
-  width: 700px;
 }
 
 /* & .cm-hmd-internal-link {
     color: var(--fire-4);
   } */
 
-.markdown-source-view .cm-s-obsidian span.cm-footref {
-    text-indent: 0;
-  }
+.cm-s-obsidian span.cm-footref {
+      text-indent: 0;
+    }
 
-.markdown-source-view pre.CodeMirror-line.HyperMD-list-line,
-  .markdown-source-view pre.CodeMirror-line-like.HyperMD-list-line {
+.cm-s-obsidian span.cm-inline-code {
+      font-size: unset;
+    }
+
+.cm-s-obsidian span.cm-meta {
+      color: var(--clr-yin);
+    }
+
+.cm-s-obsidian pre.CodeMirror-line.HyperMD-list-line,
+  .cm-s-obsidian pre.CodeMirror-line-like.HyperMD-list-line {
     padding-top: 0.4em;
     padding-bottom: 0.4em;
   }
 
 .markdown-preview-view {
   font-family: var(--body-font);
-  font-size: 21px;
   line-height: 1.6;
-  width: 675px;
 }
 
 .markdown-preview-view::-webkit-scrollbar {
@@ -168,14 +162,18 @@ img {
 
 .markdown-preview-view h1 {
     margin-top: 2em;
+    font-size: 1.5em;
   }
 
 .markdown-preview-view h2 {
     margin-top: 1.5em;
+    font-size: 1.25em;
   }
 
 .markdown-preview-view h3 {
     margin-top: 1.25em;
+    font-size: 1.1em;
+    font-weight: 700;
   }
 
 .markdown-preview-view p > code,
@@ -205,44 +203,28 @@ img {
       padding-bottom: 0.35em;
     }
 
+/* "Metadata block" styles
+      This is in case I decide to implement a "metadata block" in the future */
+
 .markdown-preview-view .markdown-preview-section ol li p, .markdown-preview-view .markdown-preview-section ul li p {
         margin: 0;
       }
 
-/* "Metadata block" styles
-      This is in case I decide to implement a "metadata block" in the future */
-
 .markdown-preview-view .markdown-preview-section .tag:not(.token) {
-      font-family: var(--fancy-sans);
-      background: var(--qi-5);
-      color: var(--yang);
-      font-size: 80%;
-      padding: 0.5em;
-      text-decoration: none;
-      transition: 0.3s ease;
-      transition-property: color, background;
+      font-size: 100%;
+      font-color: blue;
     }
-
-.markdown-preview-view .markdown-preview-section .tag:not(.token):hover {
-        color: var(--yin);
-        background: var(--qi-2);
-      }
 
 .markdown-preview-view .internal-link,
   .markdown-preview-view .external-link {
     color: var(--clr-body);
-    transition: 0.1s ease;
   }
-
-.markdown-preview-view .internal-link:hover, .markdown-preview-view .external-link:hover {
-      color: var(--fire-5);
-    }
 
 .markdown-preview-view .footnote-ref {
     font-size: 14px;
   }
 
-.markdown-preview-view ol.footnotes-list {
+.markdown-preview-view .footnotes {
     font-size: 16px;
   }
 
@@ -254,9 +236,34 @@ img {
   border-left: none;
 }
 
-.side-dock-settings {
-  margin-bottom: 0;
+.nav-file-title.is-active,
+.vertical-tab-nav-item.is-active,
+.workspace-leaf-content[data-type="tag"] .nav-action-button.is-active,
+.workspace-tab-header.is-active,
+.nav-folder .nav-folder-title-content {
+  color: var(--text-accent);
 }
+
+.nav-folder.is-collapsed .nav-folder-title-content {
+  color: unset;
+}
+
+.nav-file-title-content,
+.nav-folder.is-collapsed .nav-folder-title-content,
+.side-dock-ribbon-action,
+.nav-action-button,
+.workspace-tab-header-inner-icon,
+.workspace-ribbon-collapse-btn,
+.vertical-tab-nav-item,
+.internal-link,
+.external-link {
+  transition: color 0.1s ease;
+}
+
+.nav-file-title-content:hover, .nav-folder.is-collapsed .nav-folder-title-content:hover, .side-dock-ribbon-action:hover, .nav-action-button:hover, .workspace-tab-header-inner-icon:hover, .workspace-ribbon-collapse-btn:hover, .vertical-tab-nav-item:hover, .internal-link:hover, .external-link:hover {
+    color: var(--text-accent);
+    cursor: pointer;
+  }
 
 .nav-file-title-content {
   padding-top: 1px;
@@ -269,10 +276,6 @@ img {
 
 .CodeMirror-vscrollbar {
   height: 0;
-}
-
-.cm-s-obsidian span.cm-inline-code {
-  font-size: unset;
 }
 
 /* Saving these for later from a theme on the Obsidian Discord; */
