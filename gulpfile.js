@@ -13,7 +13,7 @@ const expectedFilenames = {}
 const source = process.env.SRC || 'theme'
 const sourcePath = `./${process.env.TARGET}/src/${source}.css`
 
-let destinationPath = `./${process.env.TARGET}/out/${source}.css`
+let destinationPath = `./${process.env.TARGET}/out/`
 
 // If there are any custom paths set in the .env, use those
 const customLabeledDest = process.env[`DEST_${process.env.TARGET}_${process.env.SRC}`]

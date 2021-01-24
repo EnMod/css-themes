@@ -1,4 +1,4 @@
-@import '../out/so3.css';
+@import "../out/so3.css";
 
 /* ===============SO3================ */
 /* SO3-Specific Presentational styles */
@@ -17,14 +17,14 @@
 
 /* Book icon like in the game menus */
 .nav-folder-title-content::before {
-  content: '📙';
+  content: "📙";
 }
 
 /* Opens the "book" above when opening the folder */
 .nav-folder.mod-root
   .nav-folder:not(.is-collapsed)
   .nav-folder-title-content::before {
-  content: '📖';
+  content: "📖";
 }
 
 .nav-files-container {
@@ -36,9 +36,13 @@
   padding-bottom: 0;
 }
 
-.mod-starred .nav-header .nav-buttons-container {
+[data-type="starred"] .nav-header .nav-buttons-container {
   & .nav-action-button:nth-child(1)::after {
-    content: 'Star current entry';
+    content: "Star current entry";
+  }
+
+  & .nav-action-button:nth-child(2)::after {
+    content: "Star current search";
   }
 }
 
@@ -62,19 +66,28 @@
 /* ============== */
 .nav-folder-title,
 .nav-file-title,
-.tag-pane-tag-text,
+.tag-pane-tag,
 .search-result-file-title,
 .search-result-file-match,
 .side-dock-collapsible-section-header {
   &:hover::before {
-    content: '👍';
+    content: "👍";
     position: absolute;
-    left: -18px;
+    left: -9px;
     top: 15px;
     transform: scale(-1.75, 1.75) rotate(-45deg);
     filter: grayscale() contrast(150%);
     text-shadow: -2px 0px 0px rgba(0, 0, 0, 0.25);
   }
+}
+
+/* Localizes the hand on hover, to the titles */
+.search-result-file-title,
+.search-result-file-match,
+.nav-file-title,
+.nav-folder-title,
+.tag-pane-tag {
+  position: relative;
 }
 
 .search-result-file-title,
@@ -93,32 +106,52 @@
   }
 }
 
-/* Localizes the hand on hover, to the titles */
-.search-result-file-title {
-  position: relative;
-}
-
 .nav-files-container,
 .item-list,
-[data-type='backlink'] .view-content,
-[data-type='search'] .search-result-container,
+[data-type="backlink"] .view-content,
+[data-type="search"] .search-result-container,
 .tag-pane-tags {
   padding: 27px;
+}
+
+[data-type="search"] .nav-header .nav-buttons-container,
+[data-type="tag"] .nav-header .nav-buttons-container {
+  flex-direction: row;
+  justify-content: space-between;
+
+  & .nav-action-button {
+    &::after {
+      display: none;
+    }
+
+    &:last-child {
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
+[data-type="tag"] .nav-header .nav-buttons-container {
+  justify-content: flex-start;
+  & .nav-action-button {
+    margin-right: 10px;
+  }
 }
 
 .nav-header .nav-buttons-container {
   padding: 42px;
   padding-bottom: 0;
+
   & .nav-action-button {
     --left-pad: 75px;
     &:nth-child(1)::after {
-      content: 'New entry';
+      content: "New entry";
       top: 40px;
       left: var(--left-pad);
     }
 
     &:nth-child(2)::after {
-      content: 'New category';
+      content: "New category";
       top: 76px;
       left: var(--left-pad);
     }
@@ -128,6 +161,10 @@
       left: var(--left-pad);
     }
   }
+}
+
+.tag-container {
+  padding-left: 27px;
 }
 
 /* Moves the actions bar to somewhere still accessible */
@@ -166,11 +203,11 @@
     z-index: 11;
 
     &::before {
-      content: '(';
+      content: "(";
     }
 
     &::after {
-      content: ')';
+      content: ")";
     }
   }
 
@@ -198,4 +235,10 @@
 
 .races .internal-link {
   color: var(--clr-races);
+}
+
+.tree-item-self {
+  & .collapse-icon {
+    display: none;
+  }
 }

@@ -10,10 +10,10 @@
   --clr-border-inset: #ebebeb;
   --clr-header-dark: rgba(20, 20, 128, 1);
 
-  --header-font: 'Handel Gothic', 'HighlandGothicLightFLF', 'Helvetica Neue',
+  --header-font: "Handel Gothic", "HighlandGothicLightFLF", "Helvetica Neue",
     sans-serif;
-  --body-font: 'Helvetica Neue', 'Nimbus Sans L', sans-serif;
-  --mono-font: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --body-font: "Helvetica Neue", "Nimbus Sans L", sans-serif;
+  --mono-font: "JetBrains Mono", Consolas, "Courier New", monospace;
 
   --side-dock-font-size: 21px;
 
@@ -78,7 +78,7 @@ body {
     & .nav-folder-title:hover,
     & .mod-backlinks .side-dock-collapsible-section-header:hover {
       background: none;
-      color: var(--clr-white);
+      color: var(--clr-selected);
     }
 
     & .nav-folder-title:hover {
@@ -104,8 +104,9 @@ body {
     margin-bottom: 0;
 
     & .nav-action-button {
-      padding: 0 0 10px 0;
+      padding: 0;
       color: var(--clr-white);
+      --left-pad: 55px;
 
       & svg path {
         stroke: var(--clr-white);
@@ -113,7 +114,7 @@ body {
 
       &::after {
         position: absolute;
-        left: 55px;
+        left: var(--left-pad);
         font-size: var(--side-dock-font-size);
       }
 
@@ -128,22 +129,20 @@ body {
         border-bottom: 2px solid var(--clr-selected);
       }
 
-      --left-pad: 55px;
-
       &:nth-child(1)::after {
-        content: 'New note';
+        content: "New note";
         top: 18px;
         left: var(--left-pad);
       }
 
       &:nth-child(2)::after {
-        content: 'New folder';
+        content: "New folder";
         top: 52px;
         left: var(--left-pad);
       }
 
       &:nth-child(3)::after {
-        content: 'Change sort order';
+        content: "Change sort order";
         top: 89px;
         left: var(--left-pad);
       }
@@ -160,14 +159,21 @@ body {
 .nav-folder {
   /* Enables "selected" styling on nav folders */
   &.mod-root {
-    & .nav-folder:not(.is-collapsed) {
+    & .nav-folder {
       & .nav-folder-children {
         margin-bottom: 2em;
       }
 
       & .nav-folder-title-content {
+        color: var(--clr-selected);
         padding-bottom: 2px;
-        border-bottom: 2px solid var(--clr-white);
+        border-bottom: 2px solid var(--clr-selected);
+      }
+
+      &.is-collapsed .nav-folder-title-content {
+        color: var(--clr-white);
+        padding-bottom: 2px;
+        border-bottom: 2px solid transparent;
       }
     }
   }
@@ -182,7 +188,7 @@ body {
 
       & .nav-folder-title-content {
         padding-bottom: 2px;
-        border-bottom: 2px solid var(--clr-white);
+        border-bottom: 2px solid var(--clr-selected);
       }
     }
 
@@ -211,11 +217,24 @@ body {
     color: var(--clr-white);
     padding: 0px 20px 2px 20px;
 
+    &.is-being-dragged {
+      background: none;
+    }
+
     &:hover {
       background: none;
 
       & .nav-file-title-content {
-        border-bottom: 2px solid var(--clr-white);
+        border-bottom: 2px solid var(--clr-selected);
+      }
+    }
+
+    &.is-active {
+      background: none;
+      color: var(--clr-selected);
+
+      & .nav-file-title-content {
+        border-bottom: 2px solid var(--clr-selected);
       }
     }
 
@@ -225,24 +244,13 @@ body {
       border-bottom: 2px solid transparent;
     }
   }
-
-  &.is-active {
-    & > .nav-file-title {
-      background: none;
-      color: var(--clr-selected);
-
-      & .nav-file-title-content {
-        border-bottom: 2px solid var(--clr-selected);
-      }
-    }
-  }
 }
 
 /* ============BORDERS================ */
 /* Borders and little square in corner */
 /* =================================== */
 
-.workspace-leaf-content:not([data-type='markdown']),
+.workspace-leaf-content:not([data-type="markdown"]),
 .markdown-source-view,
 .markdown-preview-view,
 .workspace-leaf.mod-active .view-header,
@@ -255,7 +263,7 @@ body {
 .view-header {
   &::before {
     position: absolute;
-    content: '';
+    content: "";
     border: 4px solid #e2e2e2;
     border-style: groove ridge ridge groove;
     border-radius: 1px;
@@ -269,7 +277,7 @@ body {
 
 .workspace-leaf::before {
   position: absolute;
-  content: '';
+  content: "";
   border: 4px solid #e2e2e2;
   border-style: groove ridge ridge groove;
   border-radius: 1px;
@@ -298,7 +306,7 @@ body {
 /* Background gradient */
 /* =================== */
 
-.workspace-leaf-content:not([data-type='markdown']),
+.workspace-leaf-content:not([data-type="markdown"]),
 .markdown-source-view,
 .markdown-preview-view {
   background: linear-gradient(
@@ -393,7 +401,7 @@ body {
       }
 
       &.cm-formatting-list {
-        color: var(--white);
+        color: var(--clr-white);
       }
 
       &.cm-url {
@@ -544,39 +552,39 @@ body {
   }
 
   /* Icon colors */
-  & [aria-label='Open Markdown importer'],
-  & [aria-label='Open random note'],
-  & [aria-label='Create new Zettelkasten note'],
+  & [aria-label="Open Markdown importer"],
+  & [aria-label="Open random note"],
+  & [aria-label="Create new Zettelkasten note"],
   & [aria-label="Open today's note"] {
     & svg path {
       stroke: var(--clr-races);
     }
   }
 
-  & [aria-label='File explorer'],
-  & [aria-label='Search in files'],
-  & [aria-label='Starred'] {
+  & [aria-label="File explorer"],
+  & [aria-label="Search in files"],
+  & [aria-label="Starred"] {
     & svg path {
       stroke: var(--clr-selected);
     }
   }
 
-  & [aria-label='Open quick switcher'],
-  & [aria-label='Backlinks'],
-  & [aria-label='Open graph view'] {
+  & [aria-label="Open quick switcher"],
+  & [aria-label="Backlinks"],
+  & [aria-label="Open graph view"] {
     & svg path {
       stroke: var(--clr-places);
     }
   }
 
-  & [aria-label='Tags'] {
+  & [aria-label="Tags"] {
     & svg path {
       stroke: var(--clr-people);
     }
   }
 
-  & [aria-label='Open another vault'],
-  & [aria-label='Settings'] {
+  & [aria-label="Open another vault"],
+  & [aria-label="Settings"] {
     & svg path {
       stroke: var(--clr-option);
     }
@@ -586,10 +594,7 @@ body {
 /* ==TAGS=== */
 /* Tags pane */
 /* ========= */
-[data-type='tag'] {
-  padding-top: 15px;
-  padding-left: 5px;
-
+[data-type="tag"] {
   & .tag-pane-tag {
     font-size: var(--side-dock-font-size);
     color: var(--clr-people);
@@ -598,6 +603,7 @@ body {
       background: none;
 
       & .tag-pane-tag-text {
+        color: var(--clr-people);
         border-bottom: 2px solid var(--clr-people);
       }
     }
@@ -625,7 +631,7 @@ body {
   }
 
   & .search-empty-state {
-    color: var(--white);
+    color: var(--clr-white);
   }
 
   & .search-result-file-title {
@@ -654,13 +660,13 @@ body {
 /* BACKLINKS */
 /* Backlinks */
 /* ========= */
-[data-type='backlink'] {
+[data-type="backlink"] {
   & .side-dock-plugin-panel-inner {
     padding: 27px;
   }
 
   & .search-empty-state {
-    color: var(--white);
+    color: var(--clr-white);
   }
 
   & .search-result-file-title {
@@ -673,6 +679,7 @@ body {
 
   & .search-result-file-matches {
     color: var(--clr-white);
+    border-bottom: 1px solid var(--clr-separator);
 
     & .search-result-file-match {
       &:hover {
@@ -706,4 +713,20 @@ body {
       border-bottom: 2px solid var(--clr-white);
     }
   }
+}
+
+.tree-item-self {
+  color: var(--clr-white);
+}
+
+.search-result-file-matches {
+  border-bottom: 1px solid var(--clr-separator);
+}
+
+.search-result:not(:last-child) .search-result-file-matches {
+  box-shadow: 0px 1px black;
+}
+
+.nav-action-button.is-active {
+  background: none;
 }
