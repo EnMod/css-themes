@@ -8,21 +8,19 @@ const postcssNested = require('postcss-nested')
 const postcssImport = require('postcss-import')
 
 // What filename does the target program expect to use?
-const expectedFilenames = {
-  obsidian: 'obsidian.css',
-}
+const expectedFilenames = {}
 
 const source = process.env.SRC || 'theme'
 const sourcePath = `./${process.env.TARGET}/src/${source}.css`
 
-let destination = `./${process.env.TARGET}/out/${source}.css`
+let destinationPath = `./${process.env.TARGET}/out/${source}.css`
 
-// If there are any specific paths set in the .env, use those
-if (process.env[`DEST_${process.env.TARGET}_${process.env.SRC}`]) {
-  destination = process.env[`DEST_${process.env.TARGET}_${process.env.SRC}`]
-} else if (process.env[`DEST_${process.env.TARGET}`]) {
-  destination = process.env[`DEST_${process.env.TARGET}`]
-}
+// If there are any custom paths set in the .env, use those
+const customLabeledDest = process.env[`DEST_${process.env.TARGET}_${process.env.SRC}`]
+const customUnlabeledDest = process.env[`DEST_${process.env.TARGET}`]
+
+if (customLabeledDest) destinationPath = customLabeledDest
+else if (customUnlabeledDest) destinationPath = customUnlabeledDest
 
 function compile() {
   const plugins = [postcssImport(), postcssNested()]
@@ -35,7 +33,7 @@ function compile() {
         rename(expectedFilenames[process.env.TARGET] || `${source}.css`)
       )
       .pipe(
-        dest(destination, {
+        dest(destinationPath, {
           overwrite: true,
         })
       )
@@ -50,5 +48,5 @@ function compile() {
 }
 
 exports.default = function () {
-  watch(sourcePath, compile)
+  watch(sourcePath, {ignoreInitial: false, usePolling: true}, compile)
 }
