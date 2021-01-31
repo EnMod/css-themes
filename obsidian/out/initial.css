@@ -95,6 +95,7 @@ img {
 
 .view-header .view-header-title {
     font-family: var(--header-font);
+    padding: 0;
   }
 
 .view-header .view-actions {
@@ -262,8 +263,15 @@ img {
 
 .nav-file-title-content:hover, .nav-folder.is-collapsed .nav-folder-title-content:hover, .side-dock-ribbon-action:hover, .nav-action-button:hover, .workspace-tab-header-inner-icon:hover, .workspace-ribbon-collapse-btn:hover, .vertical-tab-nav-item:hover, .internal-link:hover, .external-link:hover {
     color: var(--text-accent);
-    cursor: pointer;
   }
+
+.nav-file-title:hover .nav-file-title-content,
+.tree-item:hover .tree-item-inner,
+.tree-item:hover .tag-pane-tag-count {
+  transition: color 0.1s ease;
+
+  color: var(--text-accent);
+}
 
 .nav-file-title-content {
   padding-top: 1px;
